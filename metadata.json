@@ -1,0 +1,8 @@
+{
+  "name": "KAYNOXX Elevator Traction Machine",
+  "description": "Precision geared (KING Series) and gearless (PRINCE Series) elevator traction machines manufactured in-house in Ahmedabad, India. Includes interactive shaft configurator, CAD technical drawings, and live traction drive simulator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

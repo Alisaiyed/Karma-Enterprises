@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Barlow Condensed", sans-serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-kaynoxx-red: #B5121B;
+  --color-kaynoxx-red-dark: #8F0D14;
+  --color-kaynoxx-charcoal: #1F2124;
+  --color-kaynoxx-slate: #2E3238;
+  --color-kaynoxx-paper: #F4F5F7;
+  --color-kaynoxx-border: #E2E5EA;
+  --color-kaynoxx-muted: #5A606B;
+}
+
+@layer base {
+  html {
+    overflow-x: clip;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-kaynoxx-charcoal);
+    background-color: #ffffff;
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Signature KAYNOXX PDF Hexagon & Chevron Geometries */
+.hex-clip {
+  clip-path: polygon(50% 0%, 96% 25%, 96% 75%, 50% 100%, 4% 75%, 4% 25%);
+}
+
+.chevron-down-clip {
+  clip-path: polygon(0 0, 100% 0, 100% 84%, 50% 100%, 0 84%);
+}
+
+/* Smooth SVG Mechanical Animations (Compositor-only transforms & stroke-dashoffset) */
+@keyframes kaynoxx-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes kaynoxx-spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes rope-flow-up {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -48;
+  }
+}
+
+@keyframes rope-flow-down {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 48;
+  }
+}
+
+.animate-gear-slow {
+  animation: kaynoxx-spin 18s linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.animate-sheave-spin {
+  animation: kaynoxx-spin var(--sheave-duration, 3s) linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.animate-sheave-spin-reverse {
+  animation: kaynoxx-spin-reverse var(--sheave-duration, 3s) linear infinite;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.animate-rope-up {
+  animation: rope-flow-up var(--rope-duration, 1.4s) linear infinite;
+}
+
+.animate-rope-down {
+  animation: rope-flow-down var(--rope-duration, 1.4s) linear infinite;
+}
+
+/* Subtle architectural shaft grid backdrop */
+.shaft-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.blueprint-grid-bg {
+  background-image:
+    linear-gradient(to right, rgba(31, 33, 36, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(31, 33, 36, 0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-gear-slow,
+  .animate-sheave-spin,
+  .animate-sheave-spin-reverse,
+  .animate-rope-up,
+  .animate-rope-down {
+    animation: none !important;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
